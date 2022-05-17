@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여러가지폼요소연습</title>
+    <style>
+        fieldset{
+            border: none;
+        }
+        textarea{
+            /* textarea의 사이즈 조절을 제한할 수 있다. */
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- id, class는 인터렉션 또는 css를 적용하기 위해 정의한다. -->
+    <!-- name은 데이터 처리를 하기위한 속성이다. -->
+    <form id="test" name="test" action="">
+        <!-- 폼 요소도 접근성이 중요하다. -->
+        <fieldset>
+            <legend id="hidden"> 여러가지폼요소연습 </legend>
+            <p>
+            <!-- input 속성 중요 -->
+            <!-- input 태그는 inline요소이다. (inline = 문단을 나누는등의 행위가 없으면 가로로 쌓인다.) -->
+            <!-- size는 영문기준으로 선언된 숫자(아래에선 20) 까지 입력할 수 있는것을 말한다. -->
+            <!-- maxlength 는 최대 글자수를 말한다. -->
+            <!-- placeholder 미리보기? 같은 느낌 -->
+            <!-- autofocus는 웹페이지가 시작되자마자 커서가 autofocus를 선언한 input을 따라간다. -->
+            <!-- autocomplete 자동완성 기능 on & off -->
+            <input type="text" id="user_id" name="user_id" value="user_id" size="20" maxlength="10" placeholder="아이디입력" autofocus autocomplete="off">
+            </p>
+            <p>
+            <!-- text와 같지만 입력 데이터가 ****로 출력됨 -->
+            <input type="password" id="user_pw" name="user_pw" value="" size="20" maxlength="12" placeholder="패스워드 입력" autocomplete="off">
+            </p>
+            <p>
+                <!-- name이 같은 radio 끼리 중복체크를 막아준다.-->
+                남자<input type="radio" name="gender" checked> 여자<input type="radio" name="gender">
+            </p>
+            <p>
+                <!-- 기본형이 중복체크가 가능하더라도 name은 같아야 데이터를 불러올때 같이 가져온다. -->
+                캠핑<input type="checkbox" name="hobit"> 낚시<input type="checkbox" name="hobit">
+            </p>
+            <p>
+                <!-- 같은 form요소 안에 입력된 데이터를 보내주는역할 -->
+                <input type="submit" value="보내기"> 
+                <!-- 같은 form요소 안에 입력된 데이터를 취소할때 -->
+                <input type="reset" value="취소">
+                <!-- 일반적으로 사용하는 버튼을 만들 수 있다. -->
+                <button>일반버튼</button>
+                <input type="image" src="./images/ok_button.gif" alt="확인">
+            </p>
+            <p>
+                <!-- 확장자 제한은 어떻게? 스크립트로 해야함 -->
+                <input type="file">
+            </p>
+            <p>
+                <textarea name="" id="" cols="50" rows="10"></textarea>
+            </p>
+            <p>
+                <!-- 기본 형태가 아닌 list 형태로 구현하고 싶을때는 size를 주면 된다. -->
+                <select name="" id="" size="3">
+                    <option value="">네이버</option>
+                    <option value="">구글</option>
+                    <option value="">네이트</option>
+                </select>
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>

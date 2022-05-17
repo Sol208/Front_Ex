@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가입양식연습</title>
+    <style>
+        /* *은 모든 요소 resset.css에서는 *로 사용하면 안됨 */
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        table{
+            border-spacing: 0px;
+            border-collapse: collapse;
+        }
+        fieldset{
+            border: none;
+        }
+        form#join{
+            width: 1200px;
+            height: auto;
+            margin: 100px auto;
+        }
+        table#join_table{
+            width: 100%;
+            height: 100%;
+            border-top: solid 3px black;
+            border-bottom: solid 3px black;
+        }
+        table#join_table th{
+            width: 200px;
+            height: 80px;
+            background: #eeeeee;
+            border-bottom: dotted 1px black;
+            border-right: dotted 1px black;
+            text-align: left;
+            /* 패딩을 주면 패딩값만큼 늘어난다. & 전체 영역에 포함되지 않는다. */
+            /* padding-left: 30px; */
+            /* 들여쓰기 = indent */
+            text-indent: 40px;
+        }
+        table#join_table td{
+            border-bottom: dotted 1px black;
+            text-indent: 40px;
+        }
+        input.txt_box{
+            height: 25px;
+            background: #eeeeee;
+            border: solid 1px #cccccc;
+        }
+        .w200{
+            width: 150px;
+        }
+        .w300{
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="join" name="join">
+        <fieldset>
+            <legend>가입양식연습</legend>
+            <table id="join_table">
+                <!-- legend가 있기에 생략해도 무방하다. -->
+                <!-- <caption class="hidden">가입양식표</caption> -->
+                <tr>
+                    <!-- 인풋 요소의 접근성 -->
+                    <!-- label은 th를 클릭 했을때 text를 바로 입력할 수 있도록 커서를 이동시켜준다. -->
+                    <th><label for="user_id">아이디</label></th>
+                    <!-- !중복클래스! : 동시에 여러개를 줄 수 있다. ex)"txt_box w300" -->
+                    <td><input type="text" id="user_id" name="user_id" class="txt_box w300" maxlength="12" placeholder="아이디 입력"></td>
+                </tr>
+                <tr>
+                    <th><label for="user_pw">비밀번호</label></th>
+                    <!-- !중복클래스! : 동시에 여러개를 줄 수 있다. ex)"txt_box w300" -->
+                    <td><input type="password" id="user_pw" name="user_pw" class="txt_box w300" maxlength="12" placeholder="비밀번호 입력"></td>
+                </tr>
+                <tr>
+                    <th><label for="phone_co">연락처</label></th>
+                    <td>
+                        <select id="phone_co" name="phone_co">
+                            <option value="">이동통신</option>
+                            <option value="skt">SKT</option>
+                            <option value="kt">KT</option>
+                            <option value="lg">LG U+</option>
+                        </select>
+                        -
+                        <input type="text" name="phone_num_1" class="txt_box w200" maxlength="3" autocomplete>
+                        -
+                        <input type="text" name="phone_num_2" class="txt_box w200" maxlength="4" autocomplete>
+                        -
+                        <input type="text" name="phone_num_3" class="txt_box w200" maxlength="4" autocomplete>
+                    </td>
+                </tr>
+                <tr>
+                    <th>구분</th>
+                    <td>
+                        <label>개인회원<input type="radio" name="member" checked></label>
+                        <label>기업회원<input type="radio" name="member"></label>
+                        <label></label>외국인<input type="radio" name="member"></label>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</body>
+</html>

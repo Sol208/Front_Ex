@@ -1,0 +1,56 @@
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul.skipmenu_list>li>a{
+    width: 1px;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    position: absolute;
+}
+
+ul.skipmenu_list>li>a:focus{
+    width: 100%;
+    height: 25px;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    background: black;
+    color: white;
+}
+
+div.header_wrap{
+    width: 100%;
+    height: 114px;
+    background: -webkit-linear-gradient(top,  rgba(44,44,44,1) 0%,rgba(44,44,44,1) 30px, rgba(237,238,240,1) 30px, rgba(237,238,240,1) 114px, rgba(0,0,0,0.8) 114px); /* Chrome10-25,Safari5.1-6 */
+}
+
+.hidden{
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+
+}
+
+ul#topmenu_list{
+    width: 200px;
+    height: 100%;
+    background: red;
+    float: left;
+    
+}
+
+ul#topmenu_list>li a{
+    font-size: 15px;
+}
+
+
+nav#topmenu{
+    width: 100%;
+    height: 30px;
+    background: blue;
+    position: absolute;
+    top: 0px;
+}
