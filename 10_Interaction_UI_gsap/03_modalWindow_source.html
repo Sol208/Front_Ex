@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">  
+
+  <style>    
+    
+    
+    ul,li{
+      margin:0px; padding:0px; list-style:none;
+    }
+
+    ul#img_list{
+      width:700px;
+    }
+    ul#img_list li{
+      float:left; margin:10px;       
+    }
+    
+    div#grayLayer{          
+      height:100%; width:100%; position:absolute; left:0; top:0;      
+      background:black; opacity:0;
+    }   
+
+    div#overLayer{      
+      width:650px; height:443px; position:absolute; top:50%; left:50%;  margin-top:-221px; margin-left:-325px; 
+      display:none;
+    }
+    
+  
+  </style>
+
+  <title> modalWindow - 매개변수 활용 </title>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js "></script>
+  <!--GSAP CDN 코드 -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+                              //요소를 만들어라!(div)
+      const grayLayer=document.createElement('div');
+      const overLayer=document.createElement('div');
+
+      // grayLayer와 overLayer를 body에 추가 하기 위해 body 를 찾아 변수에 담는다.
+      const body = document.querySelector('body')
+    
+      // 아이디를 정해준다.
+      grayLayer.id = 'grayLayer';
+      overLayer.id = 'overLayer';
+
+      // img에 이벤트를 넣기 위해 img경로를 찾아 변수에 담는다.
+      const imgMenu = document.querySelectorAll('#img_list>li');
+
+      // img에 click이벤트를 지정한다.(click시 실행될 메서드도 같이 작성)
+      for(const item of imgMenu){ 
+        item.addEventListener('click',clickImgMenu);
+      }
+
+      grayLayer.addEventListener('click', hideModalWindow)
+
+      function clickImgMenu(){
+        let clickIndex = getIndex(this);
+        // alert(clickIndex)
+        showModalWindow(clickIndex);
+      }
+
+      //인덱스 뽑는 메서드
+      function getIndex(checkMenu){
+        let selectedIndex = 0;
+        while((checkMenu = checkMenu.previousElementSibling)!=null){
+          selectedIndex++;
+        }
+        return selectedIndex;
+      }
+
+      function showModalWindow(index){
+        body.append(grayLayer)
+        gsap.set(grayLayer, {display:'block'})
+        gsap.to(grayLayer, {opacity:0.9, duration:0.3, ease:'power1.out'})
+
+        body.append(overLayer);
+        gsap.set(overLayer, {display : 'block'})
+                //HTML을 넣어준다.
+        overLayer.innerHTML="<img src='./images/photo"+(index+1)+".jpg'>"
+      }       
+    function hideModalWindow(){
+      gsap.set(overLayer, {display:'none'})
+      gsap.to(grayLayer, {opacity:0, duration:0.3, ease:'power1.out', onComplete:()=>{
+        gsap.set(grayLayer, {display:'none'})
+      }})
+    }
+   })
+  </script>
+</head>
+<body>
+
+  <ul id="img_list">
+    <li><a href="#"><img src="images/photo1_thum.jpg" alt=""  /></a></li>
+    <li><a href="#"><img src="images/photo2_thum.jpg" alt="" /></a></li>
+    <li><a href="#"><img src="images/photo3_thum.jpg" alt="" /></a></li>
+    <li><a href="#"><img src="images/photo4_thum.jpg" alt="" /></a></li>
+    <li><a href="#"><img src="images/photo5_thum.jpg" alt="" /></a></li>
+    <li><a href="#"><img src="images/photo6_thum.jpg" alt="" /></a></li>
+    <li><a href="#"><img src="images/photo7_thum.jpg" alt="" /></a></li>
+    <li><a href="#"><img src="images/photo8_thum.jpg" alt="" /></a></li>
+  </ul>
+  
+</body>
+</html>
